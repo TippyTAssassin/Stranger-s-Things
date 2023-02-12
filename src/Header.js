@@ -9,7 +9,7 @@ const Header = () => {
             <span>Stranger's Things</span>
         </header>
         <p>Not a member?</p>
-        <button>Join Now</button>
+        <Link to='/makeAccount'>Join Now</Link>
         <p>Have an account?</p>
         <Link to='/signIn'>Log In</Link>
         </>
