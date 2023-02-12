@@ -9,6 +9,7 @@ import Nav from './Nav.js';
 import Messages from './Messages.js';
 import Browse from './Browse.js';
 import PostNewItem from './PostNew.js';
+import Logout from './LogOut.js';
 
 const App = () => {
     return (
@@ -22,6 +23,7 @@ const App = () => {
             <Route path='/messages' element={<Messages />}></Route>
             <Route path='/browse' element={<Browse />}></Route>
             <Route path='/postNewItem' element={<PostNewItem />}></Route>
+            <Route path='/logOut' element={<Logout />}></Route>
         </Routes>
         </>
     )
