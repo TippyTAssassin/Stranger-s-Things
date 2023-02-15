@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import { useState } from 'react';
 
 const Header = () => {
+    const [displayHomeInfo, setDisplayHomeInfo] = useState(true)
     return (
         <>
         <header>

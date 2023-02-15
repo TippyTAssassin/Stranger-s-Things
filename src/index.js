@@ -14,7 +14,6 @@ import Logout from './LogOut.js';
 const App = () => {
     return (
         <>
-        <Nav />
         <Header />
         <Routes>
             <Route path='/signIn' element={<SignIn />}></Route>

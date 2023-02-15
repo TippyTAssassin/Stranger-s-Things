@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Nav from './Nav';
 
 const Profile = () => {
     return(
         <>
+        <Nav />
         <h1>My Stuff</h1>
         <p>Name</p>
         <input type='text' placeholder='Full Name'></input>
