@@ -6,7 +6,8 @@ const COHORT_NAME = '2211-ftb-et-web-am';
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
 
 const SignIn = (props) => {
-  const navigate = useNavigate();
+ const [logUsername, setlogUsername] = useState('');
+ const [logPassword, setLogPassword] = useState('');
   const signIn = async () => {
     try {
       const response = await fetch(`${BASE_URL}/users/login`, {
@@ -29,15 +30,34 @@ const SignIn = (props) => {
     } catch (err) {
       console.error(err);
     }
-    navigate("/browse");
+  }
+  const handleLogUsernameChange = (event) => {
+    console.log(event.target.value);
+    setlogUsername(event.target.value);
+  }
+
+  const handleLogPasswordChange =(event) => {
+    console.log(event.target.value);
+    setLogPassword(event.target.value);
   }
   return (
     <>
     <h1>Welcome Back</h1>
      <form>
-     <input type="text" placeholder="username"></input>
-     <input type="text" placeholder="password"></input>
-     <button onClick={signIn}>Log In</button> 
+     <input 
+     type="text" 
+     placeholder="username" 
+     value = {logUsername}
+     onChange = {handleLogUsernameChange}>
+     </input>
+
+     <input 
+     type="text" 
+     placeholder="password" 
+     value = {logPassword}
+     onChange= {handleLogPasswordChange}>
+     </input>
+     <button type='submit' onClick={signIn}>Log In</button> 
      </form>
      
     </>

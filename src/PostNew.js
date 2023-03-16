@@ -1,13 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Nav from './Nav';
+import { useState } from 'react';
+
 //TOKEN INVAILD DUE TO HARD CODING IN MAKE ACCTOUNT.
 //TO FIX THIS PAGE, FIX MAKE ACCOUNT
+//INTRO TO REACT VID 1:08
 const COHORT_NAME = '2211-ftb-et-web-am';
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
 
 const PostNewItem = (props) => {
+  const [newItemName, setNewItemName] = useState('');
+  const [newItemPrice, setNewItemPrice] = useState('');
+  const [newItemDescription, setNewItemDescription] = useState('');
+
     const makePost = async () => {
+      
         try {
           const token = localStorage.getItem('strangers-token');
           const response = await fetch(`${BASE_URL}/posts`, {
@@ -32,24 +38,59 @@ const PostNewItem = (props) => {
           console.error(err);
         }
       }
+
+      const handleNewItemNameChange = (event) => {
+        console.log(event.target.value);
+        setNewItemName(event.target.value);
+      }
       
+      const handleNewItemPriceChange = (event) => {
+        console.log(event.target.value)
+        setNewItemPrice(event.target.value);
+      }
+
+      const handleNewItemDescription = (event) => {
+        console.log(event.target.value);
+        setNewItemDescription(event.target.value);
+      }
+
     return(
         <>
         <h1>Post New Item</h1>
-
             <form>
+
             <p>Item Name</p>
-            <input type='text' placeholder='Name you product'></input>
+            <input 
+            type='text' 
+            onChange = {handleNewItemNameChange}
+            value = { newItemName }
+            placeholder='Name you product'>
+            </input>
+
             <p>Price</p>
-            <input type='text' placeholder='Ex. $100.00'></input>
+            <input 
+            type='text' 
+            onChange = {handleNewItemPriceChange}
+            value ={ newItemPrice }
+            placeholder='Ex. $100.00'>
+            </input>
+
             <input type='radio'></input>
             <p>New</p>
+
             <input type='radio'></input>
             <p>Used</p>
+
             <div id="item-box"></div>
-            <input type='text' placeholder='Item description'></input>
-            <button onClick={makePost}>List Item</button>
-            </form> 
+            <input 
+            type='text' 
+            onChange = {handleNewItemDescription}
+            value = { newItemDescription }
+            placeholder='Item description'>
+            </input>
+            <button tpye='submit' onClick={makePost}>List Item</button>
+            </form>
+            
         </>
     )
 }
