@@ -1,22 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import MainPage from './MainPage';
 
 const Header = () => {
-    const [displayHomeInfo, setDisplayHomeInfo] = useState(true)
+    const [showMainPage, setMainPage] = useState(true);
     return (
         <>
         <header>
-            <span>Stranger's Things</span>
+           <span>Stranger's Things</span>
         </header>
-        <p>Not a member?</p>
-        <Link to='/makeAccount'>Join Now</Link>
-        <p>Have an account?</p>
-        <Link to='/signIn'>Log In</Link>
+        {
+            showMainPage ?
+            <>
+            <MainPage />
+            </> :
+            null
+        }
         </>
-        
+
     )
 }
-
-
 export default Header;

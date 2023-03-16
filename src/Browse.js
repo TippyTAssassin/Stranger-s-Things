@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Nav from './Nav';
+//DELETE POST GOES IN HERE
+// IN CONSOLE "IS AUTHOR"
+console.log('yo');
 
 const Browse = () => {
     const [browseItems, setBrowseItems ] = useState([]);
@@ -8,9 +10,7 @@ const Browse = () => {
     useEffect(() => {
         const getItems = async() => {
             const response = await fetch('https://strangers-things.herokuapp.com/api/2211-ftb-et-web-am/posts');
-           const result = await response.json();
-
-            console.log(result);
+            const result = await response.json();
             setBrowseItems(result.data.posts)
 
         }
@@ -18,10 +18,10 @@ const Browse = () => {
     }, [])
     return (
         <>
-        <Nav />
         <h1>Browse</h1>
         <input type='text' placeholder='What are you looking for?'></input>
         <button>Search</button>
+        <button>Delete Post</button>
         <form>
             {
               browseItems.map((item, index) => {
