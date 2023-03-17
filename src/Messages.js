@@ -5,14 +5,16 @@ import Nav from './Nav';
 const Messages = () => {
     return (
         <>
+        <form>
         <h1>Messages</h1>
-        <p>Incoming</p>
+        <p id="incoming">Incoming</p>
+        <input  type='text' placeholder=''></input>
+        <p id="sent">Sent</p>
         <input type='text' placeholder=''></input>
-        <p>Sent</p>
+        <p id="create-new">Create New</p>
         <input type='text' placeholder=''></input>
-        <p>Create New</p>
-        <input type='text' placeholder=''></input>
-        <button>Submit</button>
+        <button id="message-submit">Submit</button>
+        </form>
         </>
     )
 }

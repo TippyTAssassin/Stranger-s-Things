@@ -12,7 +12,7 @@ const MakeAccount = () => {
   const [newUserUsername, setNewUserUsername] = useState('');
   const [newUserPassword, setNewUserPassword] = useState('');
   const [newUserRePassword, setNewUserRePassword] = useState('');
-  const newAccount = async () => {
+  const newAccount = async(username, password) => {
     try {
       const response = await fetch(
         `${BASE_URL}/users/register`, {
@@ -22,18 +22,19 @@ const MakeAccount = () => {
         },
         body: JSON.stringify({
           user: {
-            username: 'superman27',
-            password: 'krypt0n0rbust'
+            username,
+            password
           }
         })
       });
+      console.log('hit');
       const result = await response.json();
-      console.log(result)
+      console.log(result);
       return result
     } catch (err) {
       console.error(err);
     }
-    window.localStorage.setItem('strangers-token');
+    window.localStorage.setItem('strangers-token', result);
   }
   const handleUsernameChange = (event) => {
     console.log(event.target.value);
@@ -50,27 +51,31 @@ const MakeAccount = () => {
     setNewUserRePassword(event.target.value);
   }
 
+  const submitForm = (event) => {
+    event.preventDefault();
+  }
+
   return(
     <>
-    <form>
-    <h1>Create Account</h1>
-    <p>Username</p>
-    <input 
+    <form i="account-form"onSubmit={submitForm}>
+    <h1 id="account-box">Create Account</h1>
+    <p id="account-username">Username</p>
+    <input id="username-box"
      type ='text'
      placeholder='username' 
      onChange={ handleUsernameChange } 
      value={newUserUsername}>
      </input>
 
-    <p>Password</p>
-    <input 
+    <p id="account-password">Password</p>
+    <input id="password-box"
      type ='text'
      placeholder='password' 
      onChange={ handlePasswordChange } 
      value={newUserPassword}>
      </input>
 
-    <p>Re-enter password</p>
+    <p id="account-re-password">Re-enter password</p>
     <input 
     type ='text' 
     placeholder='re-enter password'
@@ -78,7 +83,7 @@ const MakeAccount = () => {
     value={newUserRePassword}>
     </input>
 
-    <button type='submit' onClick={newAccount}>Register</button>
+    <button id="register"type='submit' onClick={newAccount}>Register</button>
     </form>
     </>
   )

@@ -12,7 +12,7 @@ const PostNewItem = (props) => {
   const [newItemPrice, setNewItemPrice] = useState('');
   const [newItemDescription, setNewItemDescription] = useState('');
 
-    const makePost = async () => {
+    const makePost = async (title, description, price) => {
       
         try {
           const token = localStorage.getItem('strangers-token');
@@ -24,10 +24,9 @@ const PostNewItem = (props) => {
             },
             body: JSON.stringify({
               post: {
-                title: "My favorite stuffed animal",
-                description: "This is a pooh doll from 1973. It has been carefully taken care of since I first got it.",
-                price: "$480.00",
-                willDeliver: true
+                title,
+                description,
+                price,
               }
             })
           });

@@ -7,6 +7,7 @@ const LogOut = (props) => {
     const yesLogOut = localStorage.removeItem('strangers-token');
     return (
         <>
+        <h1>You're Logged Out</h1>
         </>
     )
 }

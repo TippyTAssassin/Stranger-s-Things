@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 // IN CONSOLE "IS AUTHOR"
 console.log('yo');
 
-const Browse = () => {
+const Browse = (props) => {
     const [browseItems, setBrowseItems ] = useState([]);
 
     useEffect(() => {
@@ -19,16 +19,22 @@ const Browse = () => {
     return (
         <>
         <h1>Browse</h1>
-        <input type='text' placeholder='What are you looking for?'></input>
-        <button>Search</button>
-        <button>Delete Post</button>
-        <form>
+        <input id="browse-input" type='text' placeholder='What are you looking for?'></input>
+        <button id="search">Search</button>
+         
+        <form id="browse-box">
             {
               browseItems.map((item, index) => {
                   return <h3 key={index}>{item.title}</h3>
               })  
             }
         </form>
+        {
+            props.isSignedin?
+          <button id="delete">Delete Post</button> :
+          null
+        }
+        
         </>
     )
 }

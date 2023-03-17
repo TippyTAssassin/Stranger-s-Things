@@ -6,7 +6,7 @@ const Header = () => {
     const [showMainPage, setMainPage] = useState(true);
     return (
         <>
-        <header>
+        <header id="title">
            <span>Stranger's Things</span>
         </header>
         {

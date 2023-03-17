@@ -3,18 +3,20 @@ import { Link } from 'react-router-dom';
 
 const Nav = (props) => {
     return (
-        <>
+        <header>
         {
             props.isSignedIn ?
-            <Link to='/postNewItem'>Post New</Link> :
+            
+            <Link id="post-new"to='/postNewItem'>Post New</Link> :
             null
             
         }
-        <Link to='/profile'>My Stuff</Link>
-        <Link to='/messages'>Messages</Link>
-        <Link to='/browse'>Browse</Link>
-        <Link to='/logOut'>Log Out</Link>
-        </>
+        <Link id="profile"to='/profile'>My Stuff</Link>
+        <Link  id="messages"to='/messages'>Messages</Link>
+        <Link  id="browse"to='/browse'>Browse</Link>
+        <Link  id="log-out"to='/logOut'>Log Out</Link>
+       
+        </header>
     )
 }
 

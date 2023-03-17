@@ -5,19 +5,19 @@ import { useState } from 'react';
 const MainPage = () => {
     const [displayHomeInfo, setDisplayHomeInfo] = useState(true)
     return(
-        <form>
+        <form id="main-page-box">
         {
             displayHomeInfo ?
-            <>
-            <p>Not a member?</p>
+            <div id="main-page-box">
+            <p id="sign-up">Not a member?</p>
             <Link to='/makeAccount'>
              <button onClick={() => setDisplayHomeInfo(false)}>Join now</button>
             </Link>
-            <p>Have an account</p>
+            <p id="log-in">Have an account</p>
             <Link to='/signIn'>
              <button onClick={() => setDisplayHomeInfo(false)}>Log in</button>
             </Link> 
-            </> :
+            </div> :
             null
         }
     </form>

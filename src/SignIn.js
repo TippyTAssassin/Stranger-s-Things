@@ -8,7 +8,7 @@ const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
 const SignIn = (props) => {
  const [logUsername, setlogUsername] = useState('');
  const [logPassword, setLogPassword] = useState('');
-  const signIn = async () => {
+  const signIn = async (username, password) => {
     try {
       const response = await fetch(`${BASE_URL}/users/login`, {
         method: "POST",
@@ -17,8 +17,8 @@ const SignIn = (props) => {
         },
         body: JSON.stringify({
           user: {
-            username: 'superman27',
-            password: 'krypt0n0rbust'
+            username,
+            password
           }
         })
       });
@@ -43,21 +43,23 @@ const SignIn = (props) => {
   return (
     <>
     <h1>Welcome Back</h1>
-     <form>
-     <input 
+     <form id="sign-in-box">
+    <p id="sign-in-user">Username</p>
+     <input id="sign-in-username"
      type="text" 
      placeholder="username" 
      value = {logUsername}
      onChange = {handleLogUsernameChange}>
      </input>
 
-     <input 
+    <p id="sign-in-pass">Password</p>
+     <input id="sign-in-password"
      type="text" 
      placeholder="password" 
      value = {logPassword}
      onChange= {handleLogPasswordChange}>
      </input>
-     <button type='submit' onClick={signIn}>Log In</button> 
+     <button id="sign-in-submit"type='submit' onClick={signIn}>Log In</button> 
      </form>
      
     </>
