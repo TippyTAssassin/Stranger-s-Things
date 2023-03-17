@@ -8,7 +8,7 @@ const COHORT_NAME = '2211-ftb-et-web-am';
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
 
 const PostNewItem = (props) => {
-  const [newItemName, setNewItemName] = useState('');
+  const [newItemTitle, setNewItemTitle] = useState('');
   const [newItemPrice, setNewItemPrice] = useState('');
   const [newItemDescription, setNewItemDescription] = useState('');
 
@@ -38,9 +38,9 @@ const PostNewItem = (props) => {
         }
       }
 
-      const handleNewItemNameChange = (event) => {
+      const handleNewItemTitleChange = (event) => {
         console.log(event.target.value);
-        setNewItemName(event.target.value);
+        setNewItemTitle(event.target.value);
       }
       
       const handleNewItemPriceChange = (event) => {
@@ -58,11 +58,11 @@ const PostNewItem = (props) => {
         <h1>Post New Item</h1>
             <form>
 
-            <p>Item Name</p>
+            <p>Item Title</p>
             <input 
             type='text' 
-            onChange = {handleNewItemNameChange}
-            value = { newItemName }
+            onChange = {handleNewItemTitleChange}
+            value = { newItemTitle }
             placeholder='Name you product'>
             </input>
 
@@ -87,7 +87,7 @@ const PostNewItem = (props) => {
             value = { newItemDescription }
             placeholder='Item description'>
             </input>
-            <button tpye='submit' onClick={makePost}>List Item</button>
+            <button tpye='submit' onClick={()=>makePost(newItemTitle,newItemPrice,newItemDescription)}>List Item</button>
             </form>
             
         </>

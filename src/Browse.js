@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import PostNewItem from './PostNew';
 //DELETE POST GOES IN HERE
 // IN CONSOLE "IS AUTHOR"
 console.log('yo');
@@ -38,5 +39,5 @@ const Browse = (props) => {
         </>
     )
 }
-
+<PostNewItem />
 export default Browse;
