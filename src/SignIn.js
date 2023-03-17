@@ -24,6 +24,7 @@ const SignIn = (props) => {
       });
       const result = await response.json();
       window.localStorage.setItem('strangers-token', result.data.token);
+      console.log(result.data.token);
       props.setIsSignedIn(true)
 
       return result
@@ -59,7 +60,7 @@ const SignIn = (props) => {
      value = {logPassword}
      onChange= {handleLogPasswordChange}>
      </input>
-     <button id="sign-in-submit"type='submit' onClick={signIn}>Log In</button> 
+     <button id="sign-in-submit"type='submit' onClick={() => signIn(logUsername,logPassword)}>Log In</button> 
      </form>
      
     </>

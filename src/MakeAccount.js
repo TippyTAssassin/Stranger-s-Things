@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useState } from 'react';
 //TOKEN NEEDS TO NOT BE HARD CODED
 // USE NAV TO REDIRECT TO PROFILE OR HOME 
@@ -12,7 +12,7 @@ const MakeAccount = () => {
   const [newUserUsername, setNewUserUsername] = useState('');
   const [newUserPassword, setNewUserPassword] = useState('');
   const [newUserRePassword, setNewUserRePassword] = useState('');
-  const newAccount = async(username, password) => {
+  const newAccount = async(user_n, p_word) => {
     try {
       const response = await fetch(
         `${BASE_URL}/users/register`, {
@@ -22,19 +22,20 @@ const MakeAccount = () => {
         },
         body: JSON.stringify({
           user: {
-            username,
-            password
+            username: user_n,
+            password: p_word
           }
         })
       });
       console.log('hit');
       const result = await response.json();
+      window.localStorage.setItem('strangers-token', result);
       console.log(result);
       return result
     } catch (err) {
       console.error(err);
     }
-    window.localStorage.setItem('strangers-token', result);
+    
   }
   const handleUsernameChange = (event) => {
     console.log(event.target.value);
@@ -57,7 +58,7 @@ const MakeAccount = () => {
 
   return(
     <>
-    <form i="account-form"onSubmit={submitForm}>
+    <form id="account-form"onSubmit={submitForm}>
     <h1 id="account-box">Create Account</h1>
     <p id="account-username">Username</p>
     <input id="username-box"
@@ -83,7 +84,7 @@ const MakeAccount = () => {
     value={newUserRePassword}>
     </input>
 
-    <button id="register"type='submit' onClick={newAccount}>Register</button>
+    <button id="register"type='submit' onClick={() => newAccount (newUserUsername,newUserPassword)}>Register</button>
     </form>
     </>
   )
