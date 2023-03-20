@@ -23,5 +23,4 @@ const MainPage = () => {
     </form>
     )
 }
-
 export default MainPage;

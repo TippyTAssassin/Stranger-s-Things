@@ -1,9 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-//TOKEN NEEDS TO NOT BE HARD CODED
-// USE NAV TO REDIRECT TO PROFILE OR HOME 
-//USE STATE TO GET RID OF HARD CODING
-console.log('test');
 
 const COHORT_NAME = '2211-ftb-et-web-am';
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;

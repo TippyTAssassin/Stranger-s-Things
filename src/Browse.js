@@ -1,22 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import PostNewItem from './PostNew.js';
 import { Link } from 'react-router-dom';
-import PostNewItem from './PostNew';
-//DELETE POST GOES IN HERE
-// IN CONSOLE "IS AUTHOR"
-console.log('yo');
 
 const Browse = (props) => {
-    const [browseItems, setBrowseItems ] = useState([]);
-
-    useEffect(() => {
-        const getItems = async() => {
-            const response = await fetch('https://strangers-things.herokuapp.com/api/2211-ftb-et-web-am/posts');
-            const result = await response.json();
-            setBrowseItems(result.data.posts)
-
-        }
-        getItems();
-    }, [])
+    
     return (
         <>
         <h1>Browse</h1>
@@ -24,20 +11,21 @@ const Browse = (props) => {
         <button id="search">Search</button>
          
         <form id="browse-box">
+            <ol>
             {
-              browseItems.map((item, index) => {
-                  return <h3 key={index}>{item.title}</h3>
+              props.browseItems.map((item, index) => {
+                  return (
+                  <li key={index}><Link to={`post/${item._id}`}>{item.title}</Link></li>
+                  )
               })  
             }
+            </ol> 
+            
         </form>
-        {
-            props.isSignedin?
-          <button id="delete">Delete Post</button> :
-          null
-        }
-        
         </>
     )
 }
+
 <PostNewItem />
+
 export default Browse;

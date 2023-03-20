@@ -1,9 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
 
-//TOKEN INVAILD DUE TO HARD CODING IN MAKE ACCTOUNT.
-//TO FIX THIS PAGE, FIX MAKE ACCOUNT
-//INTRO TO REACT VID 1:08
 const COHORT_NAME = '2211-ftb-et-web-am';
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
 
@@ -30,6 +27,8 @@ const PostNewItem = (props) => {
               }
             })
           });
+          // CAUSES CAST ERROR TO GET POST
+          // props.setBrowseItems([...props.browseItems,{title: newItemTitle}]);
           const result = await response.json();
           console.log(result);
           return result
@@ -39,34 +38,39 @@ const PostNewItem = (props) => {
       }
 
       const handleNewItemTitleChange = (event) => {
-        console.log(event.target.value);
         setNewItemTitle(event.target.value);
-      }
-      
-      const handleNewItemPriceChange = (event) => {
-        console.log(event.target.value)
-        setNewItemPrice(event.target.value);
       }
 
       const handleNewItemDescription = (event) => {
-        console.log(event.target.value);
         setNewItemDescription(event.target.value);
       }
 
+      const handleNewItemPriceChange = (event) => {
+        setNewItemPrice(event.target.value);
+      }
+      
     return(
         <>
         <h1>Post New Item</h1>
             <form>
 
-            <p>Item Title</p>
+            <p id="item-title">Item Title</p>
             <input 
             type='text' 
             onChange = {handleNewItemTitleChange}
             value = { newItemTitle }
             placeholder='Name you product'>
             </input>
+           
+           <p id="item-descrip">Item Description</p>
+            <input 
+            type='text' 
+            onChange = {handleNewItemDescription}
+            value = { newItemDescription }
+            placeholder='Item description'>
+            </input>
 
-            <p>Price</p>
+            <p id="item-price">Price</p>
             <input 
             type='text' 
             onChange = {handleNewItemPriceChange}
@@ -74,24 +78,14 @@ const PostNewItem = (props) => {
             placeholder='Ex. $100.00'>
             </input>
 
-            <input type='radio'></input>
-            <p>New</p>
-
-            <input type='radio'></input>
-            <p>Used</p>
-
             <div id="item-box"></div>
-            <input 
-            type='text' 
-            onChange = {handleNewItemDescription}
-            value = { newItemDescription }
-            placeholder='Item description'>
-            </input>
-            <button tpye='submit' onClick={()=>makePost(newItemTitle,newItemPrice,newItemDescription)}>List Item</button>
+            
+            <button id="post-button" type='submit' onClick={()=>makePost(newItemTitle,newItemDescription,newItemPrice, props.singleItem)}>List Item</button>
+            
             </form>
             
         </>
+        
     )
 }
-
 export default PostNewItem;
